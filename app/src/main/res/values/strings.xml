@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVIDemo</string>
+    <string name="hello_setting_fragment">Hello setting fragment</string>
+</resources>
