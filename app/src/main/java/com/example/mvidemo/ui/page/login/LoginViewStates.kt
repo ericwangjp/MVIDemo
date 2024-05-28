@@ -19,6 +19,7 @@ sealed class LoginState : IState {
     data object Loading : LoginState()
     data class Error(val error: Throwable) : LoginState()
 
+//    需考虑这些数据是否需要在ViewModel中存储，以及合理性
     val newsList: List<String> = emptyList()
     val userName:String=""
     val password:String=""
@@ -28,4 +29,6 @@ sealed class LoginEvent : IEvent {
     data class NavigateToHome(val response: Int) : LoginEvent()
     data class ShowToast(val message: String) : LoginEvent()
     data class RefreshView(val userName: String, val userId: String) : LoginEvent()
+
+    data object GetNewsList : LoginEvent()
 }

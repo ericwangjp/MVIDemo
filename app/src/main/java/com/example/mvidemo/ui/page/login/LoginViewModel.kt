@@ -7,6 +7,7 @@ import com.example.mvidemo.base.BaseViewModel
 import com.example.mvidemo.base.Result
 import com.example.mvidemo.constants.LOG_TAG
 import com.example.mvidemo.ui.page.login.data.LoginRepository
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -20,7 +21,6 @@ import kotlinx.coroutines.flow.onStart
  */
 class LoginViewModel(private val repository: LoginRepository) :
     BaseViewModel<LoginAction, LoginState, LoginEvent>() {
-
     override fun onAction(action: LoginAction, currentState: LoginState?) {
         when (action) {
             LoginAction.OnLoginClicked -> login(currentState?.userName?:"",currentState?.password?:"")

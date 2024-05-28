@@ -20,6 +20,10 @@ import kotlinx.coroutines.launch
  * Create: 2024/1/11 10:25
  */
 abstract class BaseViewModel<A : IAction, S : IState, E : IEvent> : ViewModel() {
+    /**
+     * 为什么用Channel不用Flow ？是因为只需要单向流动就行了，Channel是单对单，Flow的单对多
+     * Channel的发送send和接收receive,发出的事件只能被接收一次，接收之后就不能再次接收了
+     */
     private val _action = Channel<A>()
 
     init {
@@ -48,6 +52,7 @@ abstract class BaseViewModel<A : IAction, S : IState, E : IEvent> : ViewModel() 
     /** 继承 BaseViewModel 需要实现 state 默认值*/
 //    abstract fun initialState(): S
 //
+////    StateFlow 的操作是线程安全的,仅在状态发生变化时通知收集者
 //    private val _state by lazy {
 //        MutableStateFlow(value = initialState())
 //    }
